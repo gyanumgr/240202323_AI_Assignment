@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-weight: bold;
+            color: #555;
+        }
+        label {
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Math Quiz</h1>
+    <form method="POST" action="/submit">
+        {% for question in quiz_questions %}
+        <div class="question">
+            <p>Q{{ loop.index }}: {{ question.text }}</p>
+            <div>
+                <input type="radio" name="question{{ loop.index }}" value="{{ question.options.option1 }}" id="q{{ loop.index }}_1" required>
+                <label for="q{{ loop.index }}_1">{{ question.options.option1 }}</label>
+            </div>
+            <div>
+                <input type="radio" name="question{{ loop.index }}" value="{{ question.options.option2 }}" id="q{{ loop.index }}_2">
+                <label for="q{{ loop.index }}_2">{{ question.options.option2 }}</label>
+            </div>
+            <div>
+                <input type="radio" name="question{{ loop.index }}" value="{{ question.options.option3 }}" id="q{{ loop.index }}_3">
+                <label for="q{{ loop.index }}_3">{{ question.options.option3 }}</label>
+            </div>
+            <div>
+                <input type="radio" name="question{{ loop.index }}" value="{{ question.options.option4 }}" id="q{{ loop.index }}_4">
+                <label for="q{{ loop.index }}_4">{{ question.options.option4 }}</label>
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

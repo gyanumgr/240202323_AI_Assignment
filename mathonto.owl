@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:nif="http://www.w3.org/2005/11/nif#"
+         xmlns:ex="http://example.org/MathITS#">
+
+    <!-- Ontology Metadata -->
+    <owl:Ontology rdf:about="http://example.org/MathITS">
+        <rdfs:comment>Ontology for Intelligent Tutoring System teaching area calculations for various shapes.</rdfs:comment>
+    </owl:Ontology>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="#Shape"/>
+    <owl:Class rdf:about="#Formula"/>
+    <owl:Class rdf:about="#MultipleChoiceQuestion"/>
+
+    <!-- Subclasses -->
+    <owl:Class rdf:about="#Triangle">
+        <rdfs:subClassOf rdf:resource="#Shape"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Square">
+        <rdfs:subClassOf rdf:resource="#Shape"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Rectangle">
+        <rdfs:subClassOf rdf:resource="#Shape"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Circle">
+        <rdfs:subClassOf rdf:resource="#Shape"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="#hasExample">
+        <rdfs:domain rdf:resource="#Shape"/>
+        <rdfs:range rdf:resource="#Formula"/>
+    </owl:ObjectProperty>
+
+    <!-- Datatype Properties -->
+    <owl:DatatypeProperty rdf:about="#hasFormula">
+        <rdfs:domain rdf:resource="#Formula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- Instances of Formulas -->
+    <rdf:Description rdf:about="#AreaOfTriangle">
+        <rdf:type rdf:resource="#Formula"/>
+        <ex:hasFormula rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.5 * base * height</ex:hasFormula>
+    </rdf:Description>
+    <rdf:Description rdf:about="#AreaOfSquare">
+        <rdf:type rdf:resource="#Formula"/>
+        <ex:hasFormula rdf:datatype="http://www.w3.org/2001/XMLSchema#string">side * side</ex:hasFormula>
+    </rdf:Description>
+    <rdf:Description rdf:about="#AreaOfRectangle">
+        <rdf:type rdf:resource="#Formula"/>
+        <ex:hasFormula rdf:datatype="http://www.w3.org/2001/XMLSchema#string">length * width</ex:hasFormula>
+    </rdf:Description>
+    <rdf:Description rdf:about="#AreaOfCircle">
+        <rdf:type rdf:resource="#Formula"/>
+        <ex:hasFormula rdf:datatype="http://www.w3.org/2001/XMLSchema#string">π * radius * radius</ex:hasFormula>
+    </rdf:Description>
+
+    <!-- Linking Shapes to Formulas -->
+    <rdf:Description rdf:about="#Triangle">
+        <ex:hasExample rdf:resource="#AreaOfTriangle"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="#Square">
+        <ex:hasExample rdf:resource="#AreaOfSquare"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="#Rectangle">
+        <ex:hasExample rdf:resource="#AreaOfRectangle"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="#Circle">
+        <ex:hasExample rdf:resource="#AreaOfCircle"/>
+    </rdf:Description>
+
+    <!-- Quiz Question 1 -->
+  <rdf:Description rdf:about="#Question1">
+    <rdf:type rdf:resource="http://example.org/MathITS#MultipleChoiceQuestion"/>
+    <nif:hasContext rdf:resource="#Question1Text"/>
+    <ex:hasQuestionText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">What is the area of a triangle?</ex:hasQuestionText>
+    <ex:hasOption1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.5 * base * height</ex:hasOption1>
+    <ex:hasOption2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">side * side</ex:hasOption2>
+    <ex:hasOption3 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">length * width</ex:hasOption3>
+    <ex:hasOption4 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">π * radius * radius</ex:hasOption4>
+    <ex:hasCorrectAnswer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.5 * base * height</ex:hasCorrectAnswer>
+  </rdf:Description>
+
+  <!-- Text for Question 1 -->
+  <rdf:Description rdf:about="#Question1Text">
+    <rdf:type rdf:resource="http://www.w3.org/2005/11/nif#Context"/>
+    <nif:hasAnchorOf rdf:datatype="http://www.w3.org/2001/XMLSchema#string">What is the area of a triangle?</nif:hasAnchorOf>
+  </rdf:Description>
+
+  <!-- Quiz Question 2 -->
+  <rdf:Description rdf:about="#Question2">
+    <rdf:type rdf:resource="http://example.org/MathITS#MultipleChoiceQuestion"/>
+    <nif:hasContext rdf:resource="#Question2Text"/>
+    <ex:hasQuestionText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">What is the area of a square?</ex:hasQuestionText>
+    <ex:hasOption1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">side * side</ex:hasOption1>
+    <ex:hasOption2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">length * width</ex:hasOption2>
+    <ex:hasOption3 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">π * radius * radius</ex:hasOption3>
+    <ex:hasOption4 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.5 * base * height</ex:hasOption4>
+    <ex:hasCorrectAnswer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">side * side</ex:hasCorrectAnswer>
+  </rdf:Description>
+
+  <!-- Text for Question 2 -->
+  <rdf:Description rdf:about="#Question2Text">
+    <rdf:type rdf:resource="http://www.w3.org/2005/11/nif#Context"/>
+    <nif:hasAnchorOf rdf:datatype="http://www.w3.org/2001/XMLSchema#string">What is the area of a square?</nif:hasAnchorOf>
+  </rdf:Description>
+
+  <!-- Quiz Question 3 -->
+  <rdf:Description rdf:about="#Question3">
+    <rdf:type rdf:resource="http://example.org/MathITS#MultipleChoiceQuestion"/>
+    <nif:hasContext rdf:resource="#Question3Text"/>
+    <ex:hasQuestionText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">What is the area of a rectangle?</ex:hasQuestionText>
+    <ex:hasOption1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">length * width</ex:hasOption1>
+    <ex:hasOption2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">side * side</ex:hasOption2>
+    <ex:hasOption3 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">π * radius * radius</ex:hasOption3>
+    <ex:hasOption4 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.5 * base * height</ex:hasOption4>
+    <ex:hasCorrectAnswer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">length * width</ex:hasCorrectAnswer>
+  </rdf:Description>
+
+  <!-- Text for Question 3 -->
+  <rdf:Description rdf:about="#Question3Text">
+    <rdf:type rdf:resource="http://www.w3.org/2005/11/nif#Context"/>
+    <nif:hasAnchorOf rdf:datatype="http://www.w3.org/2001/XMLSchema#string">What is the area of a rectangle?</nif:hasAnchorOf>
+  </rdf:Description>
+
+  <!-- Quiz Question 4 -->
+  <rdf:Description rdf:about="#Question4">
+    <rdf:type rdf:resource="http://example.org/MathITS#MultipleChoiceQuestion"/>
+    <nif:hasContext rdf:resource="#Question4Text"/>
+    <ex:hasQuestionText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">What is the area of a circle?</ex:hasQuestionText>
+    <ex:hasOption1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">π * radius * radius</ex:hasOption1>
+    <ex:hasOption2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">side * side</ex:hasOption2>
+    <ex:hasOption3 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">length * width</ex:hasOption3>
+    <ex:hasOption4 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.5 * base * height</ex:hasOption4>
+    <ex:hasCorrectAnswer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">π * radius * radius</ex:hasCorrectAnswer>
+  </rdf:Description>
+
+  <!-- Text for Question 4 -->
+  <rdf:Description rdf:about="#Question4Text">
+    <rdf:type rdf:resource="http://www.w3.org/2005/11/nif#Context"/>
+    <nif:hasAnchorOf rdf:datatype="http://www.w3.org/2001/XMLSchema#string">What is the area of a circle?</nif:hasAnchorOf>
+  </rdf:Description>
+
+  <!-- Additional Quiz Questions can be added here in a similar manner -->
+
+</rdf:RDF>
